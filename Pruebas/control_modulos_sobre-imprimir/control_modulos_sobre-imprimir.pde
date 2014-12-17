@@ -40,36 +40,28 @@ PShape modul4invbi;
 PShape modul4invple;
 PShape modul4invun;
 
-//color
 int valorA =mouseX;
+
 int valorB =valorA+180;
 
 float cambio= random(0,20);
-float cambio1= random(0,40);
-float cambio2= random(0,40);
+float cambio1= random(0,30);
+float cambio2= random(0,30);
 float cambio3= random(0,20);
-float cambio4= random(0,20);
-float cambio5= random(0,20);
-float cambio6= random(0,20);
-float cambio7= random(0,20);
-float cambio8= random(0,40);
-float cambio9= random(0,20);
-float cambio10= random(0,40);
-float cambio11= random(0,20);
-float cambio12= random(0,40);
-float cambio13= random(0,40);
-float cambio14= random(0,40);
-float cambio15= random(0,40);
+float cambio4= random(0,30);
+float cambio5= random(0,30);
+float cambio6= random(0,30);
+
 
 void setup(){
-  size(400,200);
+  size(380,100);
   smooth();
   colorMode(HSB,360,100,100,100);
   background(360);
   
   modul1 = loadShape("modul1.svg");
   modul1bi = loadShape("modul1bi.svg");
-  modul1x6 = loadShape("modul1x6.svg");
+modul1x6 = loadShape("modul1x6.svg");
   modul1x6bi = loadShape("modul1x6bi.svg");
   modul1x2 = loadShape("modul1x2.svg");
   modul1x2bi = loadShape("modul1x2bi.svg");
@@ -146,7 +138,6 @@ void draw(){
   modul4invple.disableStyle();
   modul4invun.disableStyle();
   
-  //color
   int valorA =mouseX;
   int valorB =valorA+180;
   
@@ -177,22 +168,17 @@ void draw(){
     else if(cambio1>10&&cambio1<20){
       shape(modul2bi, 30, 20);
     }
-    else if(cambio1>20&&cambio1<30){
+    else{
       shape(modul2ple, 30, 20);
     }
-    else if(cambio1>30){
-      shape(modul2un, 30, 20);
-    }
     
-    fill(valorB ,50,100);
+    
+    fill( valorB ,50,100);
     if(cambio2<10){
       shape(modul2inv, 30,50);
     }
     else if(cambio2>10&&cambio2<20){
       shape(modul2invbi, 30,50);
-    }
-    else if(cambio2>20&&cambio2<30){
-      shape(modul2invun, 30,50);
     }
     else{
       shape(modul2invple, 30,50);
@@ -201,7 +187,7 @@ void draw(){
   
   //E
     fill( valorA ,100,100);
-    if(cambio3<10){
+    if(cambio<10){
     shape(modul1x6, 110,20);
   }
   else{
@@ -209,21 +195,21 @@ void draw(){
   }
   
     fill( valorA ,60,100);
-    if(cambio4<10){
+    if(cambio3<10){
     shape(modul1x2, 120,20);
   }
   else{
     shape(modul1x2bi, 120,20);
   }
   
-  if(cambio5<10){
+  if(cambio3<10){
     shape(modul1x2, 120,40);
   }
   else{
     shape(modul1x2bi, 120,40);
   }
   
-  if(cambio6<10){
+  if(cambio3<10){
     shape(modul1x2, 120,70);
   }
   else{
@@ -233,7 +219,7 @@ void draw(){
   
   //M
       fill( valorA ,100,100);
-      if(cambio7<10){
+      if(cambio<10){
     shape(modul1x6, 190,20);
   }
   else{
@@ -241,20 +227,17 @@ void draw(){
   }
   
     fill( valorA ,50,100);
-    if(cambio8<10){
+    if(cambio4<10){
       shape(modul4, 200, 20);
     }
-    else if(cambio8>10&&cambio8<20){
+    else if(cambio4>10&&cambio4<20){
       shape(modul4bi, 200, 20);
-    }
-    else if(cambio8>20&&cambio8<30){
-      shape(modul4un, 200, 20);
     }
     else{
       shape(modul4ple, 200, 20);
 }
     fill( valorA ,50,100);
-    if(cambio9<10){
+    if(cambio3<10){
     shape(modul1, 215, 40);
   }
   else{
@@ -262,13 +245,10 @@ void draw(){
   }
   
     fill( valorB ,50,100);
-   if(cambio10<10){
+   if(cambio4<10){
       shape(modul4inv, 225, 20);
     }
-    else if(cambio10>10&&cambio10<20){
-      shape(modul4invun, 225, 20);
-    }
-    else if(cambio10>20&&cambio10<30){
+    else if(cambio4>10&&cambio4<20){
       shape(modul4invbi, 225, 20);
     }
     else{
@@ -276,7 +256,7 @@ void draw(){
 }
   
       fill( valorA ,100,100);
-      if(cambio11<10){
+      if(cambio<10){
     shape(modul1x6, 240,20);
   }
   else{
@@ -286,56 +266,44 @@ void draw(){
   
   //O
     fill( valorA ,50,100);
-    if(cambio12<10){
+    if(cambio5<10){
       shape(modul3, 300,20);
     }
-    else if(cambio12>10&&cambio12<20){
+    else if(cambio5>10&&cambio5<20){
       shape(modul3bi, 300,20);
-    }
-    else if(cambio12>20&&cambio12<30){
-      shape(modul3un, 300,20);
     }
     else{
       shape(modul3ple, 300,20);
 }
   
     fill( valorB ,50,100);
-    if(cambio13<10){
+    if(cambio6<10){
       shape(modul3inv, 300, 50);
     }
-    else if(cambio13>10&&cambio13<20){
+    else if(cambio6>10&&cambio6<20){
       shape(modul3invbi, 300, 50);
-    }
-    else if(cambio13>20&&cambio13<30){
-      shape(modul3invun, 300, 50);
     }
     else{
       shape(modul3invple, 300, 50);
 }
   
     fill( valorA ,50,100);
-    if(cambio14<10){
+    if(cambio1<10){
       shape(modul2, 320, 20);
     }
-    else if(cambio14>10&&cambio14<20){
+    else if(cambio1>10&&cambio1<20){
       shape(modul2bi, 320, 20);
-    }
-    else if(cambio14>20&&cambio14<30){
-      shape(modul2un, 320, 20);
     }
     else{
       shape(modul2ple, 320, 20);
 }
   
     fill( valorB ,50,100);
-    if(cambio15<10){
+    if(cambio2<10){
       shape(modul2inv, 320, 50);
     }
-    else if(cambio15>10&&cambio15<20){
+    else if(cambio2>10&&cambio2<20){
       shape(modul2invbi, 320, 50);
-    }
-    else if(cambio15>20&&cambio15<30){
-      shape(modul2invun, 320, 50);
     }
     else{
       shape(modul2invple, 320, 50);
@@ -353,36 +321,15 @@ void keyPressed() {
     guardar=true;
     saveFrame("hsb_test_"+frameCount+".png");
   }
-  if (key == 'd'){
-    cambio=random(0,20);
-    cambio1=(random(0,40));
-    cambio2=(random(0,40));
-    background(360);
+  if (key == 'p'){
+     cambio= random(0,20);
+     cambio1= random(0,30);
+     cambio2= random(0,30);
+     cambio3= random(0,20);
+     cambio4= random(0,30);
+     cambio5= random(0,30);
+    cambio6= random(0,30);
   }
-  if (key == 'e'){
-   
-    cambio3=random(0,20);
-    cambio4=random(0,20);
-    cambio5=random(0,20);
-    cambio6=random(0,20);
-    background(360);
-  }
-  if (key == 'm'){
-    cambio7=random(0,20);
-    cambio8=random(0,40);
-    cambio9=random(0,20);
-    cambio10=random(0,40);
-    cambio11=random(0,20);
-    background(360);
-  }
-  if (key == 'o'){
-    cambio12=random(0,40);
-    cambio13=random(0,40);
-    cambio14=random(0,40);
-    cambio15=random(0,40);
-    background(360);
-  }
-  
   
 }
   
