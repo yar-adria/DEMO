@@ -46,6 +46,8 @@ float cambio4= random(0,30);
 float cambio5= random(0,30);
 float cambio6= random(0,30);
 
+float opacidad = 3;
+
 
 void setup(){
   size(1230,480);
@@ -123,6 +125,9 @@ void draw(){
   int valorA =mouseX;
   int valorB =valorA+180;
   
+  float opacidad = 10;
+
+  
   if(valorA>180){
     valorB = valorA-180;
   }
@@ -133,9 +138,16 @@ void draw(){
   //stroke(0);
   //strokeWeight(1);
   noStroke();
+    background(1230);
     
-  //D
-   fill( valorA ,100,100);
+    //D
+    
+    pushMatrix();
+    for (int i=0; i<6; i=i+1){
+    stroke(0,3,6,opacidad);
+    rotate(radians(1));
+  
+   fill( valorA ,100,100, opacidad);
   if(cambio<10){
     shape(modul1x6, 150, 150);
   }
@@ -143,7 +155,7 @@ void draw(){
     shape(modul1x6bi, 150, 150);
   }
     
-    fill( valorA ,50,100);
+    fill( valorA ,50,100,opacidad);
     if(cambio1<10){
   shape(modul2, 180, 150);
     }
@@ -155,7 +167,7 @@ void draw(){
     }
     
     
-    fill( valorB ,50,100);
+    fill( valorB ,50,100,opacidad);
     if(cambio2<10){
       shape(modul2inv, 180,240);
     }
@@ -165,10 +177,20 @@ void draw(){
     else{
       shape(modul2invple, 180,240);
 }
+opacidad= opacidad+20;
+  }
+popMatrix();
   
-  
+  float opacidad1=10;
   //E
-    fill( valorA ,100,100);
+  
+  pushMatrix();
+    for (int i=0; i<8; i=i+1){
+    stroke(203,3,6,opacidad1);
+    rotate(radians(-2));
+    
+    
+    fill( valorA ,100,100,opacidad1);
     if(cambio<10){
     shape(modul1x6, 410,150);
   }
@@ -176,7 +198,7 @@ void draw(){
     shape(modul1x6bi, 410,150);
   }
   
-    fill( valorA ,60,100);
+    fill( valorA ,60,100,opacidad1);
     if(cambio3<10){
     shape(modul1x2, 440,150);
   }
@@ -197,10 +219,20 @@ void draw(){
   else{
     shape(modul1x2bi, 440,300);
   }
+  opacidad1=opacidad1+20;
+  }
+popMatrix();
   
   
   //M
-      fill( valorA ,100,100);
+  float opacidad2=10;
+  
+    pushMatrix();
+    for (int i=0; i<7; i=i+1){
+    stroke(0,3,6,opacidad2);
+    rotate(radians(4));
+    
+      fill( valorA ,100,100,opacidad2);
       if(cambio<10){
     shape(modul1x6, 620,150);
   }
@@ -208,7 +240,7 @@ void draw(){
     shape(modul1x6bi, 620,150);
   }
   
-    fill( valorA ,50,100);
+    fill( valorA ,50,100,opacidad2);
     if(cambio4<10){
       shape(modul4, 650, 150);
     }
@@ -218,7 +250,7 @@ void draw(){
     else{
       shape(modul4ple, 650, 150);
 }
-    fill( valorA ,50,100);
+    fill( valorA ,50,100,opacidad2);
     if(cambio3<10){
     shape(modul1, 695, 210);
   }
@@ -226,7 +258,7 @@ void draw(){
     shape(modul1bi, 695, 210);
   }
   
-    fill( valorB ,50,100);
+    fill( valorB ,50,100,opacidad2);
    if(cambio4<10){
       shape(modul4inv, 725, 150);
     }
@@ -237,17 +269,28 @@ void draw(){
       shape(modul4invple, 725, 150);
 }
   
-      fill( valorA ,100,100);
+      fill( valorA ,100,100,opacidad2);
       if(cambio<10){
     shape(modul1x6, 770,150);
   }
   else{
     shape(modul1x6bi, 770,150);
   }
-  
+  opacidad2=opacidad2+20;
+  }
+popMatrix();
   
   //O
-    fill( valorA ,50,100);
+  
+   float opacidad3=10;
+  
+    pushMatrix();
+    for (int i=0; i<7; i=i+1){
+    stroke(0,3,6,opacidad3);
+    translate(4,0);
+    
+    
+    fill( valorA ,50,100,opacidad3);
     if(cambio5<10){
       shape(modul3, 890,150);
     }
@@ -258,7 +301,7 @@ void draw(){
       shape(modul3ple, 890,150);
 }
   
-    fill( valorB ,50,100);
+    fill( valorB ,50,100,opacidad3);
     if(cambio6<10){
       shape(modul3inv, 890, 240);
     }
@@ -269,7 +312,7 @@ void draw(){
       shape(modul3invple, 890, 240);
 }
   
-    fill( valorA ,50,100);
+    fill( valorA ,50,100,opacidad3);
     if(cambio1<10){
       shape(modul2, 950, 150);
     }
@@ -280,7 +323,7 @@ void draw(){
       shape(modul2ple, 950, 150);
 }
   
-    fill( valorB ,50,100);
+    fill( valorB ,50,100,opacidad3);
     if(cambio2<10){
       shape(modul2inv, 950, 240);
     }
@@ -290,6 +333,9 @@ void draw(){
     else{
       shape(modul2invple, 950, 240);
 }
+opacidad3=opacidad3+20;
+  }
+popMatrix();
   
   
   if(guardar){
