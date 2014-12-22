@@ -65,7 +65,7 @@ void setup(){
   size(400,200);
   smooth();
   colorMode(HSB,360,100,100,100);
-  background(360);
+  background(100);
   
   modul1 = loadShape("modul1.svg");
   modul1bi = loadShape("modul1bi.svg");
@@ -357,7 +357,7 @@ void keyPressed() {
     cambio=random(0,20);
     cambio1=(random(0,40));
     cambio2=(random(0,40));
-    background(360);
+    background(100);
   }
   if (key == 'e'){
    
@@ -365,7 +365,7 @@ void keyPressed() {
     cambio4=random(0,20);
     cambio5=random(0,20);
     cambio6=random(0,20);
-    background(360);
+    background(100);
   }
   if (key == 'm'){
     cambio7=random(0,20);
@@ -373,14 +373,14 @@ void keyPressed() {
     cambio9=random(0,20);
     cambio10=random(0,40);
     cambio11=random(0,20);
-    background(360);
+    background(100);
   }
   if (key == 'o'){
     cambio12=random(0,40);
     cambio13=random(0,40);
     cambio14=random(0,40);
     cambio15=random(0,40);
-    background(360);
+    background(100);
   }
   
   
