@@ -1,9 +1,11 @@
-//Pulsando tecla cambia modulos (random) de la respectiva letra
-//'d' 'e' 'm' & 'o'
+
+//Pulsando 'p' cambia modulos según el criterio que marcamos
+//Pulsando 'm' borra todo
 //Apretar 'z' para guardar
 
 
 import processing.pdf.*;
+import processing.opengl.*;
 
 PGraphicsPDF pdf;
 
@@ -48,10 +50,10 @@ float cambio6= random(0,30);
 
 
 void setup(){
-  size(1280,700);
+  size(1280,700,OPENGL);
   smooth();
-  colorMode(HSB,360,100,100,100);
-  background(50);
+  colorMode(HSB,width,100,100,100);
+  background(0);
   
   modul1 = loadShape("modul1.svg");
   modul1bi = loadShape("modul1bi.svg");
@@ -78,21 +80,22 @@ void setup(){
   modul4invbi = loadShape("modul4invbi.svg");
   modul4invple = loadShape("modul4invple.svg");
   
+  
+  
+}
+
+void draw(){
+  
   if(guardar) {
     pdf = (PGraphicsPDF) createGraphics(width, height, PDF, "hsb_test_"+frameCount+".pdf");    
     beginRecord(pdf);
-    pdf.colorMode(HSB, 360, 100, 100, 100);
+    pdf.colorMode(RGB, 0, 0, 0,100);
     pdf.strokeJoin(MITER);
     pdf.strokeCap(SQUARE);
     pdf.fill(0);
     pdf.noStroke();
     pdf.rect(0,0,width,height);
   }
-}
-
-void draw(){
-  
-  
 
   modul1.disableStyle();
   modul1bi.disableStyle();
@@ -119,10 +122,8 @@ void draw(){
   modul4invbi.disableStyle();
   modul4invple.disableStyle();
   
-  float valorA =random(-5,40);
-  float valorB =valorA+180;
-  
-  //noLoop();
+  int valorA =185+mouseX;
+  int valorB =valorA+180;
   
   if(valorA>180){
     valorB = valorA-180;
@@ -131,207 +132,182 @@ void draw(){
     valorB = valorA+180;
   }
   
-  stroke(0);
+  stroke(mouseX,100,100);
   //strokeWeight(1);
   //noStroke();
-  
-  float distA = random(0,500);
-  float distB = random(0,500);
-  float repetA= random(-15,15);
-  float repetB= random(-15,15);
-  int posx1 = 150 ;
-  int posx2 = posx1+30;
-  int posx3 = posx1+270;
-  int posx4 = posx1+300;
-  int posx5 = posx1+470;
-  int posx6 = posx1+500;
-  int posx7 = posx1+545;
-  int posx8 = posx1+575;
-  int posx9 = posx1+620;
-  int posx10 = posx1+740;
-  int posx11 = posx1+800;
-  int posy1 = 150;
-  int posy2 = 240;
-  int posy3 = 210;
-  int posy4 = 300;
+    noFill();
+    
     
   //D
-  for (int i= 20; i<2700; i++){
-  // for(int j= 20; j<100; j++){
-  
-   fill( valorA ,100,100);
+   //fill( 360);
   if(cambio<10){
-    shape(modul1x6, posx1+repetA, posy1+repetB);
+    shape(modul1x6, mouseX, mouseY);
   }
   else{
-    shape(modul1x6bi, posx1+repetA, posy1+repetB);
+    shape(modul1x6bi, mouseX, mouseY);
   }
     
-    fill( valorA ,50,100);
+    //fill( 360);
     if(cambio1<10){
-  shape(modul2, posx2+repetA, posy1+repetB);
+  shape(modul2, mouseX+30, mouseY);
     }
     else if(cambio1>10&&cambio1<20){
-      shape(modul2bi, posx2+repetA, posy1+repetB);
+      shape(modul2bi, mouseX+30, mouseY);
     }
     else{
-      shape(modul2ple, posx2+repetA, posy1+repetB);
+      shape(modul2ple, mouseX+30, mouseY);
     }
     
     
-    fill( valorB ,50,100);
+    //fill( 360);
     if(cambio2<10){
-      shape(modul2inv, posx2+repetA,posy2+repetB);
+      shape(modul2inv, mouseX+30,90+mouseY);
     }
     else if(cambio2>10&&cambio2<20){
-      shape(modul2invbi, posx2+repetA,posy2+repetB);
+      shape(modul2invbi, mouseX+30,90+mouseY);
     }
     else{
-      shape(modul2invple, posx2+repetA,posy2+repetB);
+      shape(modul2invple, mouseX+30,90+mouseY);
 }
   
   
   //E
-    fill( valorA ,100,100);
+    //fill(360);
     if(cambio<10){
-    shape(modul1x6, posx3+repetA,posy1+repetB);
+    shape(modul1x6, mouseX+260,mouseY);
   }
   else{
-    shape(modul1x6bi, posx3+repetA,posy1+repetB);
+    shape(modul1x6bi, mouseX+260,mouseY);
   }
   
-    fill( valorA ,60,100);
+    //fill(360);
     if(cambio3<10){
-    shape(modul1x2, posx4+repetA,posy1+repetB);
+    shape(modul1x2, mouseX+290,mouseY);
   }
   else{
-    shape(modul1x2bi, posx4+repetA,posy1+repetB);
+    shape(modul1x2bi, mouseX+290,mouseY);
   }
   
   if(cambio3<10){
-    shape(modul1x2, posx4+repetA,posy3+repetB);
+    shape(modul1x2, mouseX+290,mouseY+60);
   }
   else{
-    shape(modul1x2bi, posx4+repetA,posy3+repetB);
+    shape(modul1x2bi, mouseX+290,mouseY+60);
   }
   
   if(cambio3<10){
-    shape(modul1x2, posx4+repetA,posy4+repetB);
+    shape(modul1x2, mouseX+290,mouseY+150);
   }
   else{
-    shape(modul1x2bi, posx4+repetA,posy4+repetB);
+    shape(modul1x2bi, mouseX+290,mouseY+150);
   }
   
   
   //M
-      fill( valorA ,100,100);
+      //fill(360);
       if(cambio<10){
-    shape(modul1x6, posx5+repetA,posy1+repetB);
+    shape(modul1x6, mouseX+470,mouseY);
   }
   else{
-    shape(modul1x6bi, posx5+repetA,posy1+repetB);
+    shape(modul1x6bi, mouseX+470,mouseY);
   }
   
-    fill( valorA ,50,100);
+    //fill(360);
     if(cambio4<10){
-      shape(modul4, posx6+repetA, posy1+repetB);
+      shape(modul4, mouseX+500, mouseY);
     }
     else if(cambio4>10&&cambio4<20){
-      shape(modul4bi, posx6+repetA, posy1+repetB);
+      shape(modul4bi, mouseX+500, mouseY);
     }
     else{
-      shape(modul4ple, posx6+repetA, posy1+repetB);
+      shape(modul4ple, mouseX+500, mouseY);
 }
-    fill( valorA ,50,100);
+    //fill( 360);
     if(cambio3<10){
-    shape(modul1, posx7+repetA, posy3+repetB);
+    shape(modul1, mouseX+545, mouseY+60);
   }
   else{
-    shape(modul1bi, posx7+repetA, posy3+repetB);
+    shape(modul1bi, mouseX+545, mouseY+60);
   }
   
-    fill( valorB ,50,100);
+    //fill(360);
    if(cambio4<10){
-      shape(modul4inv, posx8+repetA, posy1+repetB);
+      shape(modul4inv, mouseX+575, mouseY);
     }
     else if(cambio4>10&&cambio4<20){
-      shape(modul4invbi, posx8+repetA, posy1+repetB);
+      shape(modul4invbi, mouseX+575, mouseY);
     }
     else{
-      shape(modul4invple, posx8+repetA, posy1+repetB);
+      shape(modul4invple, mouseX+575, mouseY);
 }
   
-      fill( valorA ,100,100);
+      //fill(360);
       if(cambio<10){
-    shape(modul1x6, posx9+repetA,posy1+repetB);
+    shape(modul1x6, mouseX+620,mouseY);
   }
   else{
-    shape(modul1x6bi, posx9+repetA,posy1+repetB);
+    shape(modul1x6bi, mouseX+620,mouseY);
   }
   
   
   //O
-    fill( valorA ,50,100);
+    //fill(360);
     if(cambio5<10){
-      shape(modul3, posx10+repetA,posy1+repetB);
+      shape(modul3, mouseX+740,mouseY);
     }
     else if(cambio5>10&&cambio5<20){
-      shape(modul3bi, posx10+repetA,posy1+repetB);
+      shape(modul3bi, mouseX+740,mouseY);
     }
     else{
-      shape(modul3ple, posx10+repetA,posy1+repetB);
+      shape(modul3ple, mouseX+740,mouseY);
 }
   
-    fill( valorB ,50,100);
+    //fill(360);
     if(cambio6<10){
-      shape(modul3inv, posx10+repetA, posy2+repetB);
+      shape(modul3inv, mouseX+740, 90+mouseY);
     }
     else if(cambio6>10&&cambio6<20){
-      shape(modul3invbi, posx10+repetA, posy2+repetB);
+      shape(modul3invbi, mouseX+740, 90+mouseY);
     }
     else{
-      shape(modul3invple, posx10+repetA, posy2+repetB);
+      shape(modul3invple, mouseX+740, 90+mouseY);
 }
   
-    fill( valorA ,50,100);
+    //fill(360);
     if(cambio1<10){
-      shape(modul2, posx11+repetA, posy1+repetB);
+      shape(modul2, mouseX+800, mouseY);
     }
     else if(cambio1>10&&cambio1<20){
-      shape(modul2bi, posx11+repetA, posy1+repetB);
+      shape(modul2bi, mouseX+800, mouseY);
     }
     else{
-      shape(modul2ple, posx11+repetA, posy1+repetB);
+      shape(modul2ple, mouseX+800, mouseY);
 }
   
-    fill( valorB ,50,100);
+    //fill(360);
     if(cambio2<10){
-      shape(modul2inv, posx11+repetA, posy2+repetB);
+      shape(modul2inv, mouseX+800, 90+mouseY);
     }
     else if(cambio2>10&&cambio2<20){
-      shape(modul2invbi, posx11+repetA, posy2+repetB);
+      shape(modul2invbi, mouseX+800, 90+mouseY);
     }
     else{
-      shape(modul2invple, posx11+repetA, posy2+repetB);
+      shape(modul2invple, mouseX+800, 90+mouseY);
 }
-valorA = valorA+random(-1,1);
-valorB = valorB+random(-1,1);
-repetA= repetA+random(-5,5);
-repetB= repetB+random(-5,5);
-   }
- //}
-  noLoop();
   
   if(guardar){
     endRecord();
      guardar = false;
-   }
 }
+  
+   }
+
+
 
 void keyPressed() {  
   if (key == 'z') {
     guardar=true;
-    save("hsb_test_"+frameCount+".png");
+    saveFrame("hsb_test_"+frameCount+".png");
     
   }
   if (key == 'p'){
@@ -342,7 +318,9 @@ void keyPressed() {
      cambio4= random(0,30);
      cambio5= random(0,30);
      cambio6= random(0,30);
-     background(360);
+  }
+  if (key == 'm'){
+  background(360);
   }
   
 }
