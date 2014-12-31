@@ -20,6 +20,7 @@ void setup(){
   size(1200,800);
   smooth();
   colorMode(HSB,360,100,100);
+  background(0,0,255,80);
   
   modul1 = loadShape("modul1.svg");
   modul1x6 = loadShape("modul1x6.svg");
@@ -45,9 +46,9 @@ void draw(){
   modul4.disableStyle();
   modul4inv.disableStyle();
   
-  stroke(mouseX,255,255);
+  stroke(255,255,50);
   strokeWeight(1);
-  fill( color2,255,255);
+  fill( 0,0,255);
   
   //D
  

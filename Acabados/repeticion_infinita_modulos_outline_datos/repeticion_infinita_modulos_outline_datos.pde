@@ -5,6 +5,9 @@
 
 
 import processing.pdf.*;
+import processing.opengl.*;
+
+
 
 PGraphicsPDF pdf;
 
@@ -49,10 +52,10 @@ float cambio6= random(0,30);
 
 
 void setup(){
-  size(1200,700);
+  size(1280,700,OPENGL);
   smooth();
-  colorMode(RGB);
-  background(0,0,255,80);
+  colorMode(HSB,1230,100,100,100);
+  background(360);
   
   modul1 = loadShape("modul1.svg");
   modul1bi = loadShape("modul1bi.svg");
@@ -79,6 +82,15 @@ void setup(){
   modul4invbi = loadShape("modul4invbi.svg");
   modul4invple = loadShape("modul4invple.svg");
   
+ 
+  JSONObject json = loadJSONObject("http://memo.weird.es/three/jsons/resultsBicingShort.json");
+  JSONObject json1 = loadJSONObject("http://memo.weird.es/three/jsons/resultsTransit.json");
+  JSONObject json2 = loadJSONObject("http://memo.weird.es/three/jsons/resultsWeather.json");
+  JSONObject json3 = loadJSONObject("http://memo.weird.es/three/crons/cronDistance.php");
+  
+  int valoret = json.getInt("bikes");
+  
+  println(valoret);
   
   
 }
@@ -88,7 +100,7 @@ void draw(){
   if(guardar) {
     pdf = (PGraphicsPDF) createGraphics(width, height, PDF, "hsb_test_"+frameCount+".pdf");    
     beginRecord(pdf);
-    pdf.colorMode(RGB);
+    pdf.colorMode(HSB, 1230, 100, 100, 100);
     pdf.strokeJoin(MITER);
     pdf.strokeCap(SQUARE);
     pdf.fill(0);
@@ -131,12 +143,12 @@ void draw(){
     valorB = valorA+180;
   }
   
-  stroke(255,255,0);
+  stroke(900);
   //strokeWeight(1);
   //noStroke();
     
   //D
-   fill( 0,0,255);
+   fill( 360);
   if(cambio<10){
     shape(modul1x6, mouseX, mouseY);
   }
@@ -144,7 +156,7 @@ void draw(){
     shape(modul1x6bi, mouseX, mouseY);
   }
     
-    fill( 0,0,255);
+    fill( 360);
     if(cambio1<10){
   shape(modul2, mouseX+30, mouseY);
     }
@@ -156,7 +168,7 @@ void draw(){
     }
     
     
-    fill( 0,0,255);
+    fill( 360);
     if(cambio2<10){
       shape(modul2inv, mouseX+30,90+mouseY);
     }
@@ -169,7 +181,7 @@ void draw(){
   
   
   //E
-    fill(0,0,255);
+    fill(360);
     if(cambio<10){
     shape(modul1x6, mouseX+260,mouseY);
   }
@@ -177,7 +189,7 @@ void draw(){
     shape(modul1x6bi, mouseX+260,mouseY);
   }
   
-    fill(0,0,255);
+    fill(360);
     if(cambio3<10){
     shape(modul1x2, mouseX+290,mouseY);
   }
@@ -201,7 +213,7 @@ void draw(){
   
   
   //M
-      fill(0,0,255);
+      fill(360);
       if(cambio<10){
     shape(modul1x6, mouseX+470,mouseY);
   }
@@ -209,7 +221,7 @@ void draw(){
     shape(modul1x6bi, mouseX+470,mouseY);
   }
   
-    fill(0,0,255);
+    fill(360);
     if(cambio4<10){
       shape(modul4, mouseX+500, mouseY);
     }
@@ -219,7 +231,7 @@ void draw(){
     else{
       shape(modul4ple, mouseX+500, mouseY);
 }
-    fill( 0,0,255);
+    fill( 360);
     if(cambio3<10){
     shape(modul1, mouseX+545, mouseY+60);
   }
@@ -227,7 +239,7 @@ void draw(){
     shape(modul1bi, mouseX+545, mouseY+60);
   }
   
-    fill(0,0,255);
+    fill(360);
    if(cambio4<10){
       shape(modul4inv, mouseX+575, mouseY);
     }
@@ -238,7 +250,7 @@ void draw(){
       shape(modul4invple, mouseX+575, mouseY);
 }
   
-      fill(0,0,255);
+      fill(360);
       if(cambio<10){
     shape(modul1x6, mouseX+620,mouseY);
   }
@@ -248,7 +260,7 @@ void draw(){
   
   
   //O
-    fill(0,0,255);
+    fill(360);
     if(cambio5<10){
       shape(modul3, mouseX+740,mouseY);
     }
@@ -259,7 +271,7 @@ void draw(){
       shape(modul3ple, mouseX+740,mouseY);
 }
   
-    fill(0,0,255);
+    fill(360);
     if(cambio6<10){
       shape(modul3inv, mouseX+740, 90+mouseY);
     }
@@ -270,7 +282,7 @@ void draw(){
       shape(modul3invple, mouseX+740, 90+mouseY);
 }
   
-    fill(0,0,255);
+    fill(360);
     if(cambio1<10){
       shape(modul2, mouseX+800, mouseY);
     }
@@ -281,7 +293,7 @@ void draw(){
       shape(modul2ple, mouseX+800, mouseY);
 }
   
-    fill(0,0,255);
+    fill(360);
     if(cambio2<10){
       shape(modul2inv, mouseX+800, 90+mouseY);
     }
