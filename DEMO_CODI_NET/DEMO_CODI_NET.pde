@@ -1,40 +1,11 @@
 //Pulsando tecla cambia modulos (random) de la respectiva letra
 //'d' 'e' 'm' & 'o'
 //Apretar 'z' para guardar
-
-
 import processing.pdf.*;
 
 PGraphicsPDF pdf;
 
-
-
 boolean guardar;
-
-PShape modul1;
-PShape modul1bi;
-PShape modul1x6;
-PShape modul1x6bi;
-PShape modul1x2;
-PShape modul1x2bi;
-PShape modul2;
-PShape modul2bi;
-PShape modul2ple;
-PShape modul2inv;
-PShape modul2invbi;
-PShape modul2invple;
-PShape modul3;
-PShape modul3bi;
-PShape modul3ple;
-PShape modul3inv;
-PShape modul3invbi;
-PShape modul3invple;
-PShape modul4;
-PShape modul4bi;
-PShape modul4ple;
-PShape modul4inv;
-PShape modul4invbi;
-PShape modul4invple;
 
 float  posx1 = 20;
 float posy1 = 20;
@@ -43,63 +14,14 @@ int posy2 = (int)posy1;
 
 void setup() {
 
-  size(1280, 700);
+  //size(2564, 4678,JAVA2D);
+  size(1280, 720,JAVA2D);
   smooth();
   //colorMode(HSB, 360, 100, 100, 100);
   background(50);
 
   beginRecord(PDF, "filename.pdf");
 
-  /*modul1 = loadShape("modul1.svg");
-  modul1bi = loadShape("modul1bi.svg");
-  modul1x6 = loadShape("modul1x6.svg");
-  modul1x6bi = loadShape("modul1x6bi.svg");
-  modul1x2 = loadShape("modul1x2.svg");
-  modul1x2bi = loadShape("modul1x2bi.svg");
-  modul2 = loadShape("modul2.svg");
-  modul2bi = loadShape("modul2bi.svg");
-  modul2ple = loadShape("modul2ple.svg");
-  modul2inv = loadShape("modul2inv.svg");
-  modul2invbi = loadShape("modul2invbi.svg");
-  modul2invple = loadShape("modul2invple.svg");
-  modul3 = loadShape("modul3.svg");
-  modul3bi = loadShape("modul3bi.svg");
-  modul3ple = loadShape("modul3ple.svg");
-  modul3inv = loadShape("modul3inv.svg");
-  modul3invbi = loadShape("modul3invbi.svg");
-  modul3invple = loadShape("modul3invple.svg");
-  modul4 = loadShape("modul4.svg");
-  modul4bi = loadShape("modul4bi.svg");
-  modul4ple = loadShape("modul4ple.svg");
-  modul4inv = loadShape("modul4inv.svg");
-  modul4invbi = loadShape("modul4invbi.svg");
-  modul4invple = loadShape("modul4invple.svg");
-
-  modul1.disableStyle();
-  modul1bi.disableStyle();
-  modul1x6.disableStyle();
-  modul1x6bi.disableStyle();
-  modul1x2.disableStyle();
-  modul1x2bi.disableStyle();
-  modul2.disableStyle();
-  modul2bi.disableStyle();
-  modul2ple.disableStyle();
-  modul2inv.disableStyle();
-  modul2invbi.disableStyle();
-  modul2invple.disableStyle();
-  modul3.disableStyle();
-  modul3bi.disableStyle();
-  modul3ple.disableStyle();
-  modul3inv.disableStyle();
-  modul3invbi.disableStyle();
-  modul3invple.disableStyle();
-  modul4.disableStyle();
-  modul4bi.disableStyle();
-  modul4ple.disableStyle();
-  modul4inv.disableStyle();
-  modul4invbi.disableStyle();
-  modul4invple.disableStyle();
-  */
   demo(200, 200);
 }
 
@@ -149,19 +71,17 @@ void demo(int posx, int posy) {
   float criteri6 = json3.getFloat("distance");
   
   PImage webImg,maskImage;
-  
-  //json = loadJSONObject("data.json");
-
   JSONArray values = json4.getJSONArray("images");
   
-  for (int i = 0; i < values.size(); i++) {
+  //for (int i = 0; i < values.size(); i++) {
     
-  //for (int i = 0; i < 1; i++) {
+  for (int i = 0; i < 1; i++) {
     
     JSONObject imgs = values.getJSONObject(i);    
     String url = imgs.getString("img");
     
     webImg = loadImage(url, "png");
+    
          
     Letter D_1 = new Letter(valorA, 100, checkModule(1, criteri2), posx+(i*10), posy+(i*10), webImg.width, webImg.height);    
     Letter D_2 = new Letter(valorA, 50, checkModule(2, criteri1), posx+30+(i*10), posy+(i*10), webImg.width, webImg.height);    
@@ -230,6 +150,7 @@ void demo(int posx, int posy) {
     maskedImage14.mask(O_2.graphicalMask);
     maskedImage15.mask(O_3.graphicalMask);
     maskedImage16.mask(O_4.graphicalMask);
+    
     image(maskedImage1, 0, 0);
     image(maskedImage2, 0, 0);
     image(maskedImage3, 0, 0);
@@ -246,8 +167,9 @@ void demo(int posx, int posy) {
     image(maskedImage14, 0, 0);
     image(maskedImage15, 0, 0);
     image(maskedImage16, 0, 0);
-       
-    D_1.graphicalMask.blend(maskedImage1, 0, 0, webImg.width, webImg.height, 0, 0, D_1.graphicalMask.width, D_1.graphicalMask.height, ADD);
+    
+    /*   
+    maskedImage1.blend(D_1.graphicalMask, 0, 0, webImg.width, webImg.height, 0, 0, D_1.graphicalMask.width, D_1.graphicalMask.height, ADD);
     D_2.graphicalMask.blend(maskedImage2, 0, 0, webImg.width, webImg.height, 0, 0, D_1.graphicalMask.width, D_1.graphicalMask.height, ADD);
     D_3.graphicalMask.blend(maskedImage3, 0, 0, webImg.width, webImg.height, 0, 0, D_1.graphicalMask.width, D_1.graphicalMask.height, ADD);
     E_1.graphicalMask.blend(maskedImage4, 0, 0, webImg.width, webImg.height, 0, 0, D_1.graphicalMask.width, D_1.graphicalMask.height, ADD);
@@ -263,7 +185,7 @@ void demo(int posx, int posy) {
     O_2.graphicalMask.blend(maskedImage14, 0, 0, webImg.width, webImg.height, 0, 0, D_1.graphicalMask.width, D_1.graphicalMask.height, ADD);
     O_3.graphicalMask.blend(maskedImage15, 0, 0, webImg.width, webImg.height, 0, 0, D_1.graphicalMask.width, D_1.graphicalMask.height, ADD);
     O_4.graphicalMask.blend(maskedImage16, 0, 0, webImg.width, webImg.height, 0, 0, D_1.graphicalMask.width, D_1.graphicalMask.height, ADD);
-    
+    */
     println(url);
     
   }
