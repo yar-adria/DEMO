@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<script src="js/processing.js"></script>
+<script src="js/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+<div class="loaderStatus"></div>
+<canvas  id="mysketch" data-processing-sources="processing/demoProcessing.pde"></canvas>
+<script type="application/javascript">
+
+
+function loadProcessing(id) {
+
+    var pjs = Processing.getInstanceById(id);
+    pjs.setJavaScript(this);
+
+    console.log(pjs);
+
+    var json1 = "jsons/resultsBicingShort.json";
+    var json2 = "jsons/resultsTransit.json";
+    var json3 = "jsons/resultsWeather.json";
+    var json4 = "jsons/cronDistance.json";
+    var json5 = "jsons/resultsHyperlapse.json";
+    var json6 = "palette.php";
+
+    var getData1, getData2, getData3, getData4, getData5;
+    var getDataArray = new Array();
+
+    $.getJSON( json1 , function() {
+          $('.loaderStatus').text( "Loading Bicing data..." );
+        }).done(function( data ) {
+        $.each( data, function( i, item ) {
+            getData1= item;
+            console.log(i, item);
+            getDataArray[i]=item;
+            $('.loaderStatus').text( "Bicing data loaded succesfull." );
+        });
+
+        $.getJSON( json2 , function() {
+              $('.loaderStatus').text( "Loading Traffic data..." );
+            }).done(function( data ) {
+            $.each( data, function( i, item ) {
+                getData2= item;
+                console.log(i, item);
+                getDataArray[i]=item;
+                $('.loaderStatus').text( "Traffic data loaded succesfull." );
+            });
+                $.getJSON( json3 , function() {
+                      $('.loaderStatus').text( "Loading Weather data..." );
+                    }).done(function( data ) {
+                    $.each( data, function( i, item ) {
+                        getData3= item;
+                        console.log(i, item);
+                        getDataArray[i]=item;
+                    });
+                            $('.loaderStatus').text( "Weather data loaded succesfull." );
+                            //pjs.getData3=getData3;
+
+                            $.getJSON( json4 , function() {
+                                  $('.loaderStatus').text( "Loading Distance data..." );
+                                }).done(function( data ) {
+                              $.each( data, function( i, item ) {
+                                  getData4= item;
+                                  console.log(i, item);
+                                  getDataArray[i]=item;
+                                  $('.loaderStatus').text( "Distance data loaded succesfull." );
+                              });
+
+                              $.getJSON( json6 , function() {
+                                    $('.loaderStatus').text( "Loading Colorlovers data..." );
+                                  }).done(function( data ) {
+                                $.each( data.palette[1].colors, function( i, item ) {
+                                    //getData5= item;
+                                    console.log(i,item);
+                                    //getData5= item;
+                                    getDataArray['colors']=item;
+
+                                });
+                                    $('.loaderStatus').text( "Colorlovers data loaded succesfull." );
+                                    console.log(getDataArray);
+
+
+                                    pjs.getData(getDataArray);
+
+
+                              }); //json5
+
+
+                      }); //json4
+
+                   }); //json3
+
+            }); //json2
+
+    }); //json1
+}
+
+function setJavaScript(){ }
+function saveImg(){
+        var mysketch = document.getElementById('mysketch');
+        var canvasData = mysketch.toDataURL('image/png');
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST",'saveImg.php',false);
+        ajax.setRequestHeader('Content-Type', 'application/upload');
+        ajax.send(canvasData);
+    }
+
+$( document ).ready(function() {
+  setTimeout(function(){ loadProcessing('mysketch'); }, 250);
+  //loadProcessing('mysketch');
+
+
+});
+</script>
+
+
+
+
+
+</body>
+
+</html>
+
+
